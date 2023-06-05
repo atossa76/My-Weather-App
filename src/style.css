@@ -1,0 +1,81 @@
+h1 {
+  color: rgb(226, 226, 226);
+  font-size: 80px;
+  margin-left: 25px;
+}
+img {
+  width: 150px;
+  margin: 0 20px;
+}
+h6 {
+  text-align: center;
+  color: rgb(226, 226, 226);
+}
+p {
+  font-size: 20px;
+  color: rgb(226, 226, 226);
+}
+li {
+  list-style: none;
+  font-size: 18px;
+  color: rgb(226, 226, 226);
+}
+ul {
+  padding: 0;
+  margin-top: 40px;
+}
+button {
+  margin: 20px 0 20px;
+}
+a {
+  text-decoration: none;
+  color: rgb(226, 226, 226);
+}
+a:hover {
+  text-decoration: underline;
+  color: rgb(203, 215, 255);
+  font-size: 22px;
+  cursor: pointer;
+}
+.weather-app {
+  max-width: 900px;
+  margin: 50px auto;
+  border: 1px solid #434343;
+  padding: 20px;
+  border-radius: 7px;
+  background: linear-gradient(to top, #09203f 0%, #537895 100%);
+}
+.card-img-top {
+  width: 90px;
+  height: 90px;
+  display: block;
+  margin: auto 0;
+}
+.card-text {
+  text-align: center;
+  color: rgb(226, 226, 226);
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.125);
+}
+.enter-city {
+  background-color: rgba(255, 255, 255, 0.125);
+  margin: 20px 0 0;
+}
+.search-button {
+  margin: 20px 0 0;
+  width: 100px;
+}
+.temperature {
+  font-size: 50px;
+  text-align: center;
+  color: rgb(226, 226, 226);
+  font-weight: 600;
+}
+.units {
+  position: relative;
+  top: -19px;
+  font-size: 20px;
+  color: rgb(226, 226, 226);
+}
