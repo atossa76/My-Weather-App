@@ -79,3 +79,10 @@ a:hover {
   font-size: 20px;
   color: rgb(226, 226, 226);
 }
+.footer {
+  text-align: center;
+  color: #061426;
+}
+.links {
+  color: #0063e4;
+}
