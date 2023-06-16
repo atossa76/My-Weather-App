@@ -24,9 +24,7 @@ ul {
   padding: 0;
   margin-top: 40px;
 }
-button {
-  margin: 20px 0 20px;
-}
+
 a {
   text-decoration: none;
   color: rgb(226, 226, 226);
@@ -37,6 +35,19 @@ a:hover {
   font-size: 22px;
   cursor: pointer;
 }
+form {
+  position: relative;
+  left: 20px;
+}
+
+.current {
+  position: relative;
+  left: -20px;
+  margin: 20px 0 20px;
+  width: 120px;
+  background-color: #6eabf4;
+}
+
 .weather-app {
   max-width: 900px;
   margin: 50px auto;
@@ -65,17 +76,17 @@ a:hover {
 }
 .search-button {
   margin: 20px 0 0;
-  width: 100px;
+  width: 120px;
 }
 .temperature {
-  font-size: 50px;
+  font-size: 100px;
   text-align: center;
   color: rgb(226, 226, 226);
   font-weight: 600;
 }
 .units {
   position: relative;
-  top: -19px;
+  top: -50px;
   font-size: 20px;
   color: rgb(226, 226, 226);
 }
