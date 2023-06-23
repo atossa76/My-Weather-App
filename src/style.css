@@ -46,9 +46,15 @@ form {
   margin: 20px 0 20px;
   width: 120px;
   background-color: #6eabf4;
+  border-color: #6eabf4;
 }
 
+.main-descriptions {
+  position: relative;
+  top: 40px;
+}
 .weather-app {
+  text-transform: capitalize;
   max-width: 900px;
   margin: 50px auto;
   border: 1px solid #434343;

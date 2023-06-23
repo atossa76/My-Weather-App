@@ -17,7 +17,6 @@ let day = document.querySelector("#day");
 day.innerHTML = formattedDate;
 
 function showTemperature(response) {
-  console.log(response);
   let temperatureElement = document.querySelector(`.temperature`);
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
 
@@ -34,10 +33,10 @@ function showTemperature(response) {
 }
 
 function search(city) {
-  let apiKey = "f3887e262c88d1158f7e2ef4998e234c";
+  let apiKey = "540ee35bfec47at11ead13o185ed46a6";
   let units = "metric";
-  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
-  let apiUrl = `${apiEndpoint}q=${city}&units=${units}&appid=${apiKey}`;
+  let apiEndpoint = "https://api.shecodes.io/weather/v1/current?";
+  let apiUrl = `${apiEndpoint}query=${city}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
 }
 
@@ -52,9 +51,6 @@ newCity.addEventListener("submit", searchCity);
 
 function displayCurrent(response) {
   let currentTemperature = Math.round(response.data.main.temp);
-  console.log(currentTemperature);
-  console.log(response);
-  console.log(response.data.name);
   let temperatureElement = document.querySelector(`.temperature`);
   temperatureElement.innerHTML = `${currentTemperature}`;
   let h1 = document.querySelector("h1");
@@ -72,8 +68,6 @@ function displayCurrent(response) {
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  console.log(lat);
-  console.log(lon);
   let apiKey = "f3887e262c88d1158f7e2ef4998e234c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
 
