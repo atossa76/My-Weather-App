@@ -1,35 +1,38 @@
-let now = new Date();
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let weekDay = days[now.getDay()];
-let hour = now.getHours();
-let minute = now.getMinutes();
-let formattedDate = `${weekDay}, ${hour}:${minute}`;
-let day = document.querySelector("#day");
-day.innerHTML = formattedDate;
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+  let hour = now.getHours();
+  let minute = now.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let weekDay = days[now.getDay()];
+  return `${weekDay}, ${hour}:${minute}`;
+}
 
 function showTemperature(response) {
-  let temperatureElement = document.querySelector(`.temperature`);
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
-
-  let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = response.data.main.humidity;
-
-  let speedElement = document.querySelector("#speed");
-  speedElement.innerHTML = Math.round(response.data.wind.speed);
-
+  let temperatureElement = document.querySelector("#temperature");
   let descriptions = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let speedElement = document.querySelector("#speed");
+  let dateElement = document.querySelector("#date");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
   descriptions.innerHTML = response.data.weather[0].description;
-
+  humidityElement.innerHTML = response.data.main.humidity;
+  speedElement.innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#the-city").innerHTML = response.data.name;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function search(city) {
