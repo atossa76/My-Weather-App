@@ -36,6 +36,7 @@ function showTemperature(response) {
   document.querySelector("#the-city").innerHTML = response.data.city;
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute("src", response.data.condition.icon_url);
+  iconElement.setAttribute("alt", response.data.condition.icon);
 }
 
 function search(city) {
@@ -71,6 +72,7 @@ function displayCurrent(response) {
   speedElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute("src", response.data.condition.icon_url);
+  iconElement.setAttribute("alt", response.data.condition.icon);
 }
 
 function showPosition(position) {
