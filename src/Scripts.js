@@ -23,16 +23,19 @@ function formatDate(timestamp) {
 
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
-  let descriptions = document.querySelector("#description");
+  let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let speedElement = document.querySelector("#speed");
   let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
+
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
-  descriptions.innerHTML = response.data.condition.description;
+  descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = response.data.temperature.humidity;
   speedElement.innerHTML = Math.round(response.data.wind.speed);
   document.querySelector("#the-city").innerHTML = response.data.city;
   dateElement.innerHTML = formatDate(response.data.time * 1000);
+  iconElement.setAttribute("src", response.data.condition.icon_url);
 }
 
 function search(city) {
@@ -54,19 +57,20 @@ newCity.addEventListener("submit", searchCity);
 
 function displayCurrent(response) {
   let currentTemperature = document.querySelector("#temperature");
-  currentTemperature.innerHTML = Math.round(response.data.temperature.current);
-
   let h1 = document.querySelector("h1");
-  h1.innerHTML = response.data.city;
-
   let description = document.querySelector("#description");
-  description.innerHTML = response.data.condition.description;
-
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = response.data.temperature.humidity;
-
   let speedElement = document.querySelector("#speed");
+  let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
+
+  currentTemperature.innerHTML = Math.round(response.data.temperature.current);
+  h1.innerHTML = response.data.city;
+  description.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = response.data.temperature.humidity;
   speedElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
+  iconElement.setAttribute("src", response.data.condition.icon_url);
 }
 
 function showPosition(position) {
