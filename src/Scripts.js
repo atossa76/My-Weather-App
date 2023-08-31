@@ -27,12 +27,12 @@ function showTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let speedElement = document.querySelector("#speed");
   let dateElement = document.querySelector("#date");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
-  descriptions.innerHTML = response.data.weather[0].description;
-  humidityElement.innerHTML = response.data.main.humidity;
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  descriptions.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = response.data.temperature.humidity;
   speedElement.innerHTML = Math.round(response.data.wind.speed);
-  document.querySelector("#the-city").innerHTML = response.data.name;
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  document.querySelector("#the-city").innerHTML = response.data.city;
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
 }
 
 function search(city) {
@@ -53,16 +53,17 @@ let newCity = document.querySelector("#search-city");
 newCity.addEventListener("submit", searchCity);
 
 function displayCurrent(response) {
-  let currentTemperature = Math.round(response.data.main.temp);
-  let temperatureElement = document.querySelector(`.temperature`);
-  temperatureElement.innerHTML = `${currentTemperature}`;
+  let currentTemperature = document.querySelector("#temperature");
+  currentTemperature.innerHTML = Math.round(response.data.temperature.current);
+
   let h1 = document.querySelector("h1");
-  h1.innerHTML = response.data.name;
+  h1.innerHTML = response.data.city;
+
   let description = document.querySelector("#description");
-  description.innerHTML = response.data.weather[0].description;
+  description.innerHTML = response.data.condition.description;
 
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = response.data.main.humidity;
+  humidityElement.innerHTML = response.data.temperature.humidity;
 
   let speedElement = document.querySelector("#speed");
   speedElement.innerHTML = Math.round(response.data.wind.speed);
@@ -71,11 +72,11 @@ function displayCurrent(response) {
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "f3887e262c88d1158f7e2ef4998e234c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?`;
+  let apiKey = "540ee35bfec47at11ead13o185ed46a6";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?`;
 
   axios
-    .get(`${apiUrl}lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
+    .get(`${apiUrl}lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`)
     .then(displayCurrent);
 }
 
