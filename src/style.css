@@ -20,6 +20,9 @@ li {
   font-size: 18px;
   color: rgb(226, 226, 226);
 }
+li:first-letter {
+  text-transform: capitalize;
+}
 ul {
   padding: 0;
   margin-top: 40px;
@@ -54,7 +57,6 @@ form {
   top: 40px;
 }
 .weather-app {
-  text-transform: capitalize;
   max-width: 900px;
   margin: 50px auto;
   border: 1px solid #434343;
