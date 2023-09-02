@@ -105,3 +105,10 @@ form {
 .links {
   color: #0063e4;
 }
+
+.active:hover {
+  cursor: default;
+  font-size: 20px;
+  text-decoration: none;
+  color: rgb(226, 226, 226);
+}
