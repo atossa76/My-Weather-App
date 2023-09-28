@@ -10,6 +10,7 @@ img {
 h6 {
   text-align: center;
   color: rgb(226, 226, 226);
+  font-size: 15px;
 }
 p {
   font-size: 20px;
@@ -111,4 +112,8 @@ form {
   font-size: 20px;
   text-decoration: none;
   color: rgb(226, 226, 226);
+}
+.weather-forecast-date,
+.weather-forecast-min {
+  opacity: 0.65;
 }
