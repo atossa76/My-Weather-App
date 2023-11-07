@@ -90,6 +90,7 @@ function showPosition(position) {
 function findLocation() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+
 let current = document.querySelector("button");
 current.addEventListener("click", findLocation);
 
@@ -112,6 +113,41 @@ function displayCelsiusTemperature(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+function displayForecast() {
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+      <div class="col-2">
+        <h6 class="weather-forecast-date">${day}</h6>
+        <div class="row-1">
+          <div class="card">
+            <div class="d-flex justify-content-center">
+              <img
+                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+                class="card-img-top mt-1"
+                alt="broken clouds day"
+              />
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <span class="weather-forecast-max">18°</span> /
+                <span class="weather-forecast-min">10°</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      `;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
 let celsiusTemperature = null;
 
 let newCity = document.querySelector("#search-city");
@@ -124,3 +160,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Ardabil");
+displayForecast();
