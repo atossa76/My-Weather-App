@@ -39,6 +39,8 @@ function showTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute("src", response.data.condition.icon_url);
   iconElement.setAttribute("alt", response.data.condition.icon);
+
+  getForecast(response.data.city);
 }
 
 function search(city) {
@@ -74,6 +76,8 @@ function displayCurrent(response) {
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute("src", response.data.condition.icon_url);
   iconElement.setAttribute("alt", response.data.condition.icon);
+
+  getForecast(response.data.city);
 }
 
 function showPosition(position) {
@@ -113,9 +117,17 @@ function displayCelsiusTemperature(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-function displayForecast() {
+function getForecast(city) {
+  let apiKey = "540ee35bfec47at11ead13o185ed46a6";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let forecastHtml = "";
+  let forecastHtml = '<div class="row">';
 
   days.forEach(function (day) {
     forecastHtml =
@@ -143,7 +155,7 @@ function displayForecast() {
       </div>
       `;
   });
-
+  forecastHtml = forecastHtml + "</div>";
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
@@ -160,4 +172,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Ardabil");
-displayForecast();
